@@ -1,0 +1,27 @@
+%h1= "#{@items.count} items"
+= link_to 'New item', new_item_path
+#gmap Loading map...
+= link_to 'New item', new_item_path
+%table
+  %tr
+    %th Name
+    %th Location
+    %th
+    %th
+    %th
+
+  - @items.each do |item|
+    %tr
+      %td= item.name
+      %td= item.location
+      %td= link_to 'Show', item
+      %td= link_to 'Edit', edit_item_path(item)
+      %td= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete
+= link_to 'New item', new_item_path
+
+:javascript
+  jQuery(function(){
+    jQuery.getJSON('/items', function(items) {
+      LocalCRUD.initGmap('#gmap', [38.0, -97.0], items);
+    });
+  });
