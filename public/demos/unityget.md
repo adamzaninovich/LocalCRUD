@@ -12,17 +12,18 @@ Ok, given all that, here's how you query a location:
 
 ```javascript
 // declare variables
-var baseURL, distance, httpRequest, location, response;
+var baseURL, distance, httpRequest, lat, lng, response;
 
 // the location part of the query should be formatted like this string
-location  = "35.2821,-120.659";
-distance  = 3; // in miles
-baseURL   = "http://localcrud.herokuapp.com/items";
+lat  = "35.2821";
+lng  = "-120.659";
+miles  = 2; // in miles
+baseURL   = "http://localcrud.herokuapp.com/nearby.json";
 
 // make request
-httpRequest = new WWW(baseURL+"/nearby/"+encodeURIComponent(location)+"/"+encodeURIComponent(distance)+"/miles.json");
+httpRequest = new WWW(baseURL + "?lat=" + lat + "&lng=" + lng + "&ft=" + miles*5280);
 
-// your url should look something like http://localcrud.herokuapp.com/items/nearby/35.2821%2C-120.659/3/miles.json
+// your url should look something like http://localcrud.herokuapp.com/nearby.json?lat=35.2821&lng=-120.659&ft=10560
 // you can try this in a browser to see what you'll get.
 
 // wait for request to complete
@@ -45,8 +46,8 @@ if (httpRequest.error === null) {
 {
   params: { // these are the parameters from your query 
     lat: 35.2821,
-    lng: -120.659",
-    distance: 660
+    lng: -120.659,
+    distance: 660.0
   },
   items: [ // this is an array of items that were found nearby in order of distance
     { // item 0
@@ -65,9 +66,9 @@ if (httpRequest.error === null) {
 You can access these as you normally would with an object:
 
 ```javascript
-response.items[0].latlng[1]
+response.items[0].coordinates.lng
 => -120.659
-response.params.unit
+response.params.distance
 => "miles"
 ```
 Hope this helps!

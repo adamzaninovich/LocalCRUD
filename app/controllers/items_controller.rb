@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
     end
   end
   
-  # GET /nearby.json?lat=xx.xxx&lng=-xxx.xx&ft=20
+  # GET /nearby.json?lat=xx.xxx&lng=-xxx.xx&ft=5280
   def nearby
     lat,lng,ft = params[:lat].to_f, params[:lng].to_f, (params[:ft].nil? ? 5280 : params[:ft].to_f)
     @items = Item.geo_near(
