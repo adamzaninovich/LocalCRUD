@@ -135,4 +135,11 @@ Item.delete_all
 {:name=>"item in San Luis Obispo, Calif.", :location=>"35.2821, -120.659"},
 {:name=>"item in Bakersfield, Calif.", :location=>"35.3759, -119.0288"},
 {:name=>"item in Visalia, Calif.", :location=>"36.3278, -119.3093"},
-{:name=>"item in Bridgetown, Barbados", :location=>"13.0991, -59.614"}].each {|c|Item.create(c)}
+{:name=>"item in Bridgetown, Barbados", :location=>"13.0991, -59.614"},
+{:name=>"item in Uptown Blackhorse, SLO, CA", :location=>"35.281422, -120.659643"},
+{:name=>"item in Starbucks, SLO, CA", :location=>"35.2803599, -120.6620433"},
+{:name=>"item in Higher Groundz, SLO, CA", :location=>"35.2601875, -120.6490676"},
+{:name=>"item in Peet's Coffee and Tea, SLO, CA", :location=>"35.28094, -120.661455"},
+{:name=>"item in Slo Perk, SLO, CA", :location=>"35.28025969999999, -120.6631818"},
+{:name=>"item in Sally Loo's Wholesome Cafe, SLO, CA", :location=>"35.275673, -120.655626"},
+{:name=>"item in Kreuzberg, SLO, CA", :location=>"35.28096600000001, -120.662895"}].each {|c|Item.create(c)}
