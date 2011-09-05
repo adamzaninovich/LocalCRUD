@@ -14,6 +14,7 @@
     = f.text_field :location, readonly:true
     (drag map marker to set location)
     #map-selector{:'data-zoom'=>@item.latlng.nil? ? 3 : 12, :'data-lat'=>@item.latlng.nil? ? '38.0' : @item.latlng[0], :'data-lng'=>@item.latlng.nil? ? '-97.0' : @item.latlng[1]}
+      Loading map...
   .actions
     = f.submit 'Save'
 
