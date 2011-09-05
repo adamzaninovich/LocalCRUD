@@ -10,7 +10,7 @@ window.LocalCRUD.initGmap = (container, centerLatLng, markers, zoom=5) ->
     center:       new google.maps.LatLng(centerLatLng[0], centerLatLng[1])
     zoomControl:  true
     panControl:   true
-    mapTypeId:    google.maps.MapTypeId.ROADMAP
+    mapTypeId:    google.maps.MapTypeId.TERRAIN
   
   map = new google.maps.Map(($ container).get(0), options)
   infoWindow = new google.maps.InfoWindow { maxWidth: 100 }
