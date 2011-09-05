@@ -20,7 +20,7 @@ distance  = 3; // in miles
 baseURL   = "http://localcrud.herokuapp.com/items";
 
 // make request
-httpRequest = new WWW(baseURL + "/nearby/" + encodeURIComponent(location) + "/" + encodeURIComponent(distance) + "/miles.json");
+httpRequest = new WWW(baseURL+"/nearby/"+encodeURIComponent(location)+"/"+encodeURIComponent(distance)+"/miles.json");
 
 // your url should look something like http://localcrud.herokuapp.com/items/nearby/35.2821%2C-120.659/3/miles.json
 // you can try this in a browser to see what you'll get. It will be something like:
