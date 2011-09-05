@@ -17,10 +17,12 @@ class Item
     @location
   end
   
-  validates :location, format: {
+  validates :name,      presence:true
+  validates :location,  presence:true, 
+                        format: {
     with:         /\A-?\d+(.\d+)?, -?\d+(.\d+)?\z/,
     message:      'needs to be formatted like "38.0, -97.0"',
-    allow_blank:  true
+    allow_blank:  false
   }
   
   after_validation :prepare_latlng
