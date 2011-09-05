@@ -44,14 +44,14 @@ if (httpRequest.error === null) {
 ```javascript
 {
   params: { // these are the parameters from your query 
-    location: "35.2821,-120.659",
-    distance: 3,
-    unit:     "miles"
+    lat: 35.2821,
+    lng: -120.659",
+    distance: 660
   },
   items: [ // this is an array of items that were found nearby in order of distance
     { // item 0
       name: "first item",
-      latlng: [35.2821,-120.659]
+      coordinates: { lat: 35.2821, lng: -120.659 },
       distance: 0.0
     },
     { // item 1

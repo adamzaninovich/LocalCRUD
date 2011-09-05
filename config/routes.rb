@@ -1,4 +1,7 @@
 Localcrud::Application.routes.draw do
+  
+  match '/nearby(.:format)' => 'items#nearby', :as => :nearby
+  
   resources :items
   
   root to: 'items#index'

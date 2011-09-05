@@ -11,7 +11,7 @@ window.LocalCRUD.initGmap = (container, centerLatLng, markers, zoom=5, draggable
     zoomControl:        true
     panControl:         false
     streetViewControl:  false
-    mapTypeId:          google.maps.MapTypeId.TERRAIN
+    mapTypeId:          google.maps.MapTypeId.ROADMAP
     draggable:          draggable
     mapTypeControl:     false
   
@@ -20,7 +20,7 @@ window.LocalCRUD.initGmap = (container, centerLatLng, markers, zoom=5, draggable
   
   if markers isnt undefined
     for marker in markers
-      loc = new google.maps.LatLng(marker.latlng[0], marker.latlng[1])
+      loc = new google.maps.LatLng(marker.coordinates.lat, marker.coordinates.lng)
       m = new google.maps.Marker {
         position:   loc
         map:        map

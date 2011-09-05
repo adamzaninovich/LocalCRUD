@@ -6,7 +6,7 @@
 %p
   %b Location:
   = @item.location
-#item-map{:'data-lat'=>@item.latlng[0], :'data-lng'=>@item.latlng[1]}
+#item-map{:'data-lat'=>@item.coordinates[:lat], :'data-lng'=>@item.coordinates[:lng]}
   Loading map...
 
 = link_to 'Edit', edit_item_path(@item)

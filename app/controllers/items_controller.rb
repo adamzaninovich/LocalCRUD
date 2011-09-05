@@ -9,6 +9,42 @@ class ItemsController < ApplicationController
       format.json { render json: @items }
     end
   end
+  
+  # GET /nearby.json?lat=xx.xxx&lng=-xxx.xx&ft=20
+  def nearby
+    lat,lng,ft = params[:lat].to_f, params[:lng].to_f, (params[:ft].nil? ? 5280 : params[:ft].to_f)
+    @items = Item.geo_near(
+      lat:          lat,
+      lng:          lng,
+      max_distance: ft,
+      unit:         :ft,
+      spherical:    true
+    ).map do |item|
+      distance = Geocoder::Calculations.distance_between(
+        [ lat, lng ],
+        [ item.coordinates[:lat], item.coordinates[:lng] ],
+        units: :mi
+      ) * 5280.0
+      if distance <= ft
+        {
+          name:         item.name,
+          coordinates:  item.coordinates,
+          distance:     distance
+        }
+      else
+        nil
+      end
+    end.compact
+    
+    render json: {
+      params: {
+        lat:lat,
+        lng:lng,
+        ft:ft
+      },
+      items:  @items
+    }
+  end
 
   # GET /items/1
   # GET /items/1.json

@@ -13,7 +13,7 @@
     = f.label :location
     = f.text_field :location, readonly:true
     (drag map marker to set location)
-    #map-selector{:'data-zoom'=>@item.latlng.nil? ? 3 : 12, :'data-lat'=>@item.latlng.nil? ? '38.0' : @item.latlng[0], :'data-lng'=>@item.latlng.nil? ? '-97.0' : @item.latlng[1]}
+    #map-selector{:'data-zoom'=>@item.coordinates.nil? ? 3 : 12, :'data-lat'=>@item.coordinates.nil? ? '38.0' : @item.coordinates[:lat], :'data-lng'=>@item.coordinates.nil? ? '-97.0' : @item.coordinates[:lng]}
       Loading map...
   .actions
     = f.submit 'Save'
@@ -32,8 +32,8 @@
     
     google.maps.event.addListener(marker, 'drag', function(){
       var lat,lng;
-      lat = marker.getPosition().lat().toString().match(/-?\d+.?\d{0,4}/)[0]
-      lng = marker.getPosition().lng().toString().match(/-?\d+.?\d{0,4}/)[0]
+      lat = marker.getPosition().lat().toString().match(/-?\d+.?\d{0,5}/)[0]
+      lng = marker.getPosition().lng().toString().match(/-?\d+.?\d{0,5}/)[0]
       $('#item_location').val(lat + ', ' + lng);
     });
   });

@@ -6,6 +6,10 @@ gem 'rails',          '3.1.0'
 gem 'mongoid',        '~> 2.2.0'
 gem 'bson_ext',       '~> 1.3.1'
 
+# geolocation
+gem 'geocoder'
+gem 'mongoid_spacial'
+
 # templates
 gem 'haml-rails',     '~> 0.3.4'
 
