@@ -4,13 +4,15 @@ class Item
   attr_accessible :name, :location
   
   field :name
-  field :latlng, :type => Array
+  field :latlng, type: Array
   index [[ :latlng, Mongo::GEO2D ]]
   
   attr_writer :location
   def location
-    unless self.latlng.nil?
-      @location = self.latlng.join(', ')      
+    if @location.nil?
+      unless self.latlng.nil?
+        @location = self.latlng.join(', ')
+      end
     end
     @location
   end
@@ -22,6 +24,14 @@ class Item
   }
   
   after_validation :prepare_latlng
+  
+  def next
+    Item.all.to_a[(Item.all.map(&:id).index(self.id) + 1) % Item.count]
+  end
+  
+  def previous
+    Item.all.to_a[(Item.all.map(&:id).index(self.id) - 1) % Item.count]
+  end
   
   private
   def prepare_latlng

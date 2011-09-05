@@ -1,6 +1,6 @@
 %h1= "#{@items.count} items"
 = link_to 'New item', new_item_path
-#gmap Loading map...
+#index-map Loading map...
 = link_to 'New item', new_item_path
 %table
   %tr
@@ -22,6 +22,6 @@
 :javascript
   jQuery(function(){
     jQuery.getJSON('/items', function(items) {
-      LocalCRUD.initGmap('#gmap', [38.0, -97.0], items);
+      LocalCRUD.initGmap('#index-map', [38.0, -97.0], items, 5);
     });
   });

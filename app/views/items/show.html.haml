@@ -6,7 +6,28 @@
 %p
   %b Location:
   = @item.location
+#item-map{:'data-lat'=>@item.latlng[0], :'data-lng'=>@item.latlng[1]}
 
 = link_to 'Edit', edit_item_path(@item)
 \|
-= link_to 'Back', items_path
+= link_to 'All items', items_path
+\|
+= link_to 'Prev', item_path(@item.previous)
+\|
+= link_to 'Next', item_path(@item.next)
+
+:javascript
+  jQuery(function(){
+    var lat,lng,map,marker;
+    
+    lat = $('#item-map').data('lat');
+    lng = $('#item-map').data('lng');
+    
+    map = LocalCRUD.initGmap('#item-map',[lat,lng], undefined, 12);
+    
+    marker = new google.maps.Marker({
+      position:   new google.maps.LatLng(lat,lng),
+      map:        map
+    });
+    
+  });
