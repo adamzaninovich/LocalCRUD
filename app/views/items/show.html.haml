@@ -24,7 +24,7 @@
     lat = $('#item-map').data('lat');
     lng = $('#item-map').data('lng');
     
-    map = LocalCRUD.initGmap('#item-map',[lat,lng], undefined, 12);
+    map = LocalCRUD.initGmap('#item-map',[lat,lng], undefined, 12, false);
     
     marker = new google.maps.Marker({
       position:   new google.maps.LatLng(lat,lng),

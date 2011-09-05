@@ -4,13 +4,16 @@
 
 window.LocalCRUD = {}
 
-window.LocalCRUD.initGmap = (container, centerLatLng, markers, zoom=5) ->
+window.LocalCRUD.initGmap = (container, centerLatLng, markers, zoom=5, draggable=true) ->
   options = 
-    zoom:         zoom
-    center:       new google.maps.LatLng(centerLatLng[0], centerLatLng[1])
-    zoomControl:  true
-    panControl:   true
-    mapTypeId:    google.maps.MapTypeId.TERRAIN
+    zoom:               zoom
+    center:             new google.maps.LatLng(centerLatLng[0], centerLatLng[1])
+    zoomControl:        true
+    panControl:         false
+    streetViewControl:  false
+    mapTypeId:          google.maps.MapTypeId.TERRAIN
+    draggable:          draggable
+    mapTypeControl:     false
   
   map = new google.maps.Map(($ container).get(0), options)
   infoWindow = new google.maps.InfoWindow { maxWidth: 100 }
