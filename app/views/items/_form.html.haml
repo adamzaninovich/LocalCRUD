@@ -13,7 +13,7 @@
     = f.label :location
     = f.text_field :location, readonly:true
     (drag map marker to set location)
-    #map-selector{:'data-zoom'=>@item.coordinates.nil? ? 3 : 12, :'data-lat'=>@item.coordinates.nil? ? '38.0' : @item.coordinates[:lat], :'data-lng'=>@item.coordinates.nil? ? '-97.0' : @item.coordinates[:lng]}
+    #map-selector{:'data-zoom'=>@item.new_record? ? 3 : 12, :'data-lat'=>@item.new_record? ? '38.0' : @item.coordinates[:lat], :'data-lng'=>@item.new_record? ? '-97.0' : @item.coordinates[:lng]}
       Loading map...
   .actions
     = f.submit 'Save'

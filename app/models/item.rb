@@ -43,7 +43,11 @@ class Item
   end
   
   def self.hsh_to_loc(hsh)
-    "#{hsh[:lat]}, #{hsh[:lng]}"
+    unless hsh[:lat].nil? or hsh[:lng].nil?
+      "#{hsh[:lat]}, #{hsh[:lng]}"
+    else
+      ""
+    end
   end
   
   private
